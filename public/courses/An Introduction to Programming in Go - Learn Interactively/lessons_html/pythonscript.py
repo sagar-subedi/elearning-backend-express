@@ -1,7 +1,7 @@
 import os
 
 # CSS link to be inserted
-css_link = '<link rel="stylesheet" href="educative.css">\n'
+css_link = '<link rel="stylesheet" href="css/educative.css">\n'
 inject_marker = "<!--mui-inject-first-->"
 
 # Iterate over all HTML files in the current directory

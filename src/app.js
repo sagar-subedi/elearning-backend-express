@@ -38,16 +38,7 @@ app.get("/courses/:courseName/lessons", (req, res) => {
 app.get("/courses/:courseName/:lessonName", (req, res) => {
     const { courseName, lessonName } = req.params;
 
-    let lessonPath;
-    
-    if (lessonName.endsWith(".css")) {
-        // Serve CSS files without appending .html
-        lessonPath = path.join(coursesDir, courseName, "lessons_html", lessonName);
-        res.set("Content-Type", "text/css"); // Ensure correct MIME type
-    } else {
-        // Default to serving .html files
-        lessonPath = path.join(coursesDir, courseName, "lessons_html", `${lessonName}.html`);
-    }
+    const lessonPath = path.join(coursesDir, courseName, "lessons_html", `${lessonName}.html`);
 
     res.sendFile(lessonPath, (err) => {
         if (err) {
@@ -58,4 +49,3 @@ app.get("/courses/:courseName/:lessonName", (req, res) => {
 
 
 module.exports = app;
-// app.listen(3000, () => console.log("Server running on http://localhost:3000"));
