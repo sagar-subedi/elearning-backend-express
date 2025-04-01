@@ -60,3 +60,5 @@ coverage/
 .pids
 pm2.log
 pm2.pid
+
+courses
