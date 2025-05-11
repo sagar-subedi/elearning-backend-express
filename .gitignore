@@ -62,3 +62,4 @@ pm2.log
 pm2.pid
 
 courses
+users.json
