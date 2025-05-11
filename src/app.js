@@ -28,31 +28,12 @@ app.use(express.static(staticDir,{
     
     
     setHeaders: (res, filePath) => {
-
-    
-    //   fs.readFile(filePath, 'utf8', (err, data) => {
-    //     if (err) {
-    //       console.error('Error reading file:', err);
-    //       return;
-    //     }
-    //     // Check if the content contains the SVG opening tag
-    //     if (data.startsWith('<svg') || data.startsWith('<!DOCTYPE svg')) {
-    //       res.setHeader('Content-Type', 'image/svg+xml; charset=UTF-8');
-    //     } 
-    //   });
-
         // Synchronously read the file
         const fileContent = fs.readFileSync(filePath, 'utf8');
          // Check if the file contains specific content (e.g., <!DOCTYPE svg)
          if (!path.extname(filePath) || fileContent.startsWith('<svg') || fileContent.startsWith('<!DOCTYPE svg')) {
             res.setHeader('Content-Type', 'image/svg+xml; charset=UTF-8');
         }
-
-    //Assuming the file is an SVG if it has no extension, the logic above
-    //is performance wise inefficient as that requires reading the file
-    // if (!path.extname(filePath)) {  // Check if the file has no extension
-    //     res.setHeader('Content-Type', 'image/svg+xml; charset=UTF-8');
-    // }
 
     }
   }));
